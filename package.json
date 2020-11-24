@@ -1,6 +1,12 @@
 {
   "name": "next-boilerplate",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "author": {
+    "name": "Fábrica de Código",
+    "email": "contato@fabricadecodigo.com",
+    "url": "https://www.fabricadecodigo.com"
+  },
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next dev",
