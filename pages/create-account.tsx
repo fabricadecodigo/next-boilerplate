@@ -14,6 +14,7 @@ import NextLink from 'next/link';
 import React from 'react';
 import * as Yup from 'yup';
 import CopyrightComponent from '../components/screen/Copyright/Copyright';
+import FormLoadingComponent from '../components/screen/FormLoading/FormLoading';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -75,7 +76,10 @@ export default function CreateAccountPage() {
     initialValues: initialValues,
     validationSchema: formSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      setTimeout(() => {
+        alert(JSON.stringify(values, null, 2));
+        formik.setSubmitting(false);
+      }, 3000);
     },
   });
 
@@ -188,6 +192,7 @@ export default function CreateAccountPage() {
           >
             Criar minha conta
           </Button>
+          {formik.isSubmitting && <FormLoadingComponent />}
         </form>
 
         <p>

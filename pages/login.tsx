@@ -1,5 +1,11 @@
-import { createStyles, makeStyles, Theme } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
+import {
+  CircularProgress,
+  createStyles,
+  makeStyles,
+  Theme,
+  Button,
+  Box,
+} from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -9,10 +15,10 @@ import Typography from '@material-ui/core/Typography';
 import LockIcon from '@material-ui/icons/Lock';
 import MailIcon from '@material-ui/icons/Mail';
 import { useFormik } from 'formik';
-import React from 'react';
+import Link from 'next/link';
 import * as Yup from 'yup';
 import CopyrightComponent from '../components/screen/Copyright/Copyright';
-import Link from 'next/link';
+import FormLoadingComponent from '../components/screen/FormLoading/FormLoading';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -37,7 +43,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     divider: {
       margin: theme.spacing(4, 0),
-    },
+    }
   })
 );
 
@@ -63,7 +69,10 @@ export default function LoginPage() {
     initialValues: initialValues,
     validationSchema: formSchema,
     onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
+      setTimeout(() => {
+        alert(JSON.stringify(values, null, 2));
+        formik.setSubmitting(false);
+      }, 3000);
     },
   });
 
@@ -132,6 +141,7 @@ export default function LoginPage() {
           >
             Entrar
           </Button>
+          {formik.isSubmitting && <FormLoadingComponent />}
         </form>
 
         <Divider className={classes.divider} variant="fullWidth" />
