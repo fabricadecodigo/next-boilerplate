@@ -1,6 +1,8 @@
+import { ThemeProvider } from '@material-ui/core';
+import CssBaseline from '@material-ui/core/CssBaseline';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import theme from '../lib/theme';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -10,11 +12,13 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Next.js Boilerplate</title>
         <meta
           name="viewport"
-          content="minimum-scale=1, initial-scale=1, width=device-width"
-        />
+          content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        ></meta>
       </Head>
-      <CssBaseline />
-      <Component {...pageProps} />
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Component {...pageProps} />
+      </ThemeProvider>
     </>
   );
 }
