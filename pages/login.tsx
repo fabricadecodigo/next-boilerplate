@@ -21,8 +21,8 @@ const useStyles = makeStyles((theme: Theme) =>
       justifyContent: 'center',
       alignItems: 'center',
       flexWrap: 'wrap',
-      height: '100vh',
-      gap: theme.spacing(10),
+      minHeight: '100vh',
+      gap: theme.spacing(5),
       padding: theme.spacing(2),
     },
     sloganTitle: {
@@ -70,10 +70,10 @@ export default function LoginPage() {
   return (
     <div className={classes.root}>
       <div>
-        <Typography className={classes.sloganTitle} variant="h2" component="h1">
+        <Typography className={classes.sloganTitle} variant="h3" component="h1">
           Next Boilerplate
         </Typography>
-        <Typography variant="h3" component="h2">
+        <Typography variant="h4" component="h2">
           Um slogan aqui
         </Typography>
       </div>
@@ -138,9 +138,11 @@ export default function LoginPage() {
 
         <Grid container spacing={1}>
           <Grid item xs={12}>
-            <Button variant="text" fullWidth={true}>
-              Esqueceu a senha?
-            </Button>
+            <Link href="/forgot-password" passHref>
+              <Button variant="text" fullWidth={true}>
+                Esqueceu a senha?
+              </Button>
+            </Link>
           </Grid>
           <Grid item xs={12}>
             <Link href="/create-account" passHref>

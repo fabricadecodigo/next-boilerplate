@@ -21,9 +21,7 @@ const useStyles = makeStyles((theme: Theme) =>
       display: 'flex',
       justifyContent: 'center',
       alignItems: 'center',
-      flexWrap: 'wrap-reverse',
       minHeight: '100vh',
-      gap: theme.spacing(5),
       padding: theme.spacing(2),
     },
     sloganTitle: {
@@ -43,32 +41,18 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 interface IFormData {
-  name?: string;
   email?: string;
-  password?: string;
-  confirmPassword?: string;
 }
 
 export default function CreateAccountPage() {
   const classes = useStyles();
 
   const initialValues: IFormData = {
-    name: '',
     email: '',
-    password: '',
-    confirmPassword: '',
   };
 
   const formSchema = Yup.object().shape({
-    name: Yup.string()
-      .required('Obrigatório')
-      .min(2, 'O nome deve ter pelo menos 2 caracteres'),
     email: Yup.string().email('E-mail inválido').required('Obrigatório'),
-    password: Yup.string().required('Obrigatório'),
-    confirmPassword: Yup.string().oneOf(
-      [Yup.ref('password'), null],
-      'A senha não é igual a confirmação'
-    ).required('Obrigatório'),
   });
 
   const formik = useFormik({
@@ -84,32 +68,11 @@ export default function CreateAccountPage() {
       <Paper className={classes.form} elevation={3}>
         <Box textAlign="center">
           <Typography component="h3" variant="h5">
-            Crie sua conta
+            Esqueceu sua senha?
           </Typography>
         </Box>
 
         <form noValidate onSubmit={formik.handleSubmit}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            id="name"
-            placeholder="Seu nome"
-            name="name"
-            autoComplete="name"
-            autoFocus
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <PersonIcon />
-                </InputAdornment>
-              ),
-            }}
-            onChange={formik.handleChange}
-            value={formik.values.name}
-            error={formik.touched.name && Boolean(formik.errors.name)}
-            helperText={formik.touched.name && formik.errors.name}
-          />
           <TextField
             variant="outlined"
             margin="normal"
@@ -130,53 +93,7 @@ export default function CreateAccountPage() {
             error={formik.touched.email && Boolean(formik.errors.email)}
             helperText={formik.touched.email && formik.errors.email}
           />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            name="password"
-            placeholder="Uma senha"
-            type="password"
-            id="password"
-            autoComplete="current-password"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <LockIcon />
-                </InputAdornment>
-              ),
-            }}
-            onChange={formik.handleChange}
-            value={formik.values.password}
-            error={formik.touched.password && Boolean(formik.errors.password)}
-            helperText={formik.touched.password && formik.errors.password}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            fullWidth
-            name="confirmPassword"
-            placeholder="Confirme sua senha"
-            type="password"
-            id="confirmPassword"
-            autoComplete="off"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">
-                  <LockIcon />
-                </InputAdornment>
-              ),
-            }}
-            onChange={formik.handleChange}
-            value={formik.values.confirmPassword}
-            error={
-              formik.touched.confirmPassword &&
-              Boolean(formik.errors.confirmPassword)
-            }
-            helperText={
-              formik.touched.confirmPassword && formik.errors.confirmPassword
-            }
-          />
+
           <Button
             className={classes.submit}
             type="submit"
@@ -190,31 +107,18 @@ export default function CreateAccountPage() {
           </Button>
         </form>
 
-        <p>
-          Ao se registrar, você concorda com os{' '}
-          <Link href="#">termos de uso</Link> e a{' '}
-          <Link href="#">política de privacidade</Link> do app.
-        </p>
-
         <Divider className={classes.divider} variant="fullWidth" />
 
-        <CopyrightComponent />
-      </Paper>
-      <div>
-        <Typography className={classes.sloganTitle} variant="h3" component="h1">
-          Next Boilerplate
-        </Typography>
-        <Typography variant="h4" component="h2">
-          Um slogan aqui
-        </Typography>
-        <Box mt={10}>
+        <Box mt={1} textAlign="center">
           <NextLink href="login" passHref>
             <Button color="primary" startIcon={<ArrowBackIcon />}>
               Voltar
             </Button>
           </NextLink>
         </Box>
-      </div>
+
+        <CopyrightComponent />
+      </Paper>
     </div>
   );
 }
