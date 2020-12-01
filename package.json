@@ -1,6 +1,12 @@
 {
   "name": "next-boilerplate",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "author": {
+    "name": "Fábrica de Código",
+    "email": "contato@fabricadecodigo.com",
+    "url": "https://www.fabricadecodigo.com"
+  },
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -8,8 +14,16 @@
     "start": "next start"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.0",
+    "@material-ui/icons": "^4.9.1",
     "next": "10.0.3",
     "react": "17.0.1",
     "react-dom": "17.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.9",
+    "@types/react": "^17.0.0",
+    "prettier": "2.2.0",
+    "typescript": "^4.1.2"
   }
 }
