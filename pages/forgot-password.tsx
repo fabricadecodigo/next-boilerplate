@@ -1,4 +1,4 @@
-import { Box, createStyles, Link, makeStyles, Theme } from '@material-ui/core';
+import { Box, createStyles, makeStyles, Theme } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import Divider from '@material-ui/core/Divider';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -6,9 +6,7 @@ import Paper from '@material-ui/core/Paper';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-import LockIcon from '@material-ui/icons/Lock';
 import MailIcon from '@material-ui/icons/Mail';
-import PersonIcon from '@material-ui/icons/Person';
 import { useFormik } from 'formik';
 import NextLink from 'next/link';
 import React from 'react';

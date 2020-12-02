@@ -1,10 +1,7 @@
 import {
-  CircularProgress,
-  createStyles,
+  Button, createStyles,
   makeStyles,
-  Theme,
-  Button,
-  Box,
+  Theme
 } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
