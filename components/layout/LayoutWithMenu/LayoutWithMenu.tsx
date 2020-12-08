@@ -86,7 +86,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export default function LayoutComponent({ children }) {
+export default function LayoutWithMenuComponent({ children }) {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = useState(false);
