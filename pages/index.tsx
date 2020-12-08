@@ -1,8 +1,9 @@
 import Typography from '@material-ui/core/Typography';
+import LayoutWithMenu from '../components/layout/LayoutWithMenu/LayoutWithMenu';
 
 export default function Home() {
   return (
-    <div>
+    <LayoutWithMenu>
       <Typography paragraph>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus
@@ -31,6 +32,6 @@ export default function Home() {
         maecenas accumsan lacus vel facilisis. Nulla posuere sollicitudin
         aliquam ultrices sagittis orci a.
       </Typography>
-    </div>
+    </LayoutWithMenu>
   );
 }

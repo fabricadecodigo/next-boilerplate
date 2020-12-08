@@ -7,10 +7,10 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import {
-    createStyles,
-    makeStyles,
-    Theme,
-    useTheme
+  createStyles,
+  makeStyles,
+  Theme,
+  useTheme,
 } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -19,8 +19,11 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import InboxIcon from '@material-ui/icons/MoveToInbox';
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import PeopleIcon from '@material-ui/icons/People';
 import clsx from 'clsx';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
+import Link from 'next/link';
 
 const drawerWidth = 240;
 
@@ -88,6 +91,12 @@ export default function LayoutComponent({ children }) {
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
+  // menu
+  const menu: Array<{ name: string; to: string; icon?: ReactNode }> = [
+    { name: 'Dashboard', to: '/', icon: <DashboardIcon /> },
+    { name: 'Contatos', to: '/customers', icon: <PeopleIcon /> },
+  ];
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -139,24 +148,13 @@ export default function LayoutComponent({ children }) {
         </div>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
+          {menu.map((menuItem, index) => (
+            <Link key={index} href={menuItem.to} passHref>
+              <ListItem button component="a">
+                <ListItemIcon>{menuItem.icon}</ListItemIcon>
+                <ListItemText primary={menuItem.name} />
+              </ListItem>
+            </Link>
           ))}
         </List>
       </Drawer>
@@ -166,7 +164,7 @@ export default function LayoutComponent({ children }) {
         })}
       >
         <div className={classes.drawerHeader} />
-        {children}        
+        {children}
       </main>
     </div>
   );
