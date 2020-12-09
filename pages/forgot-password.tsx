@@ -105,7 +105,7 @@ export default function CreateAccountPage() {
             color="primary"
             disabled={formik.isSubmitting}
           >
-            Criar minha conta
+            Esqueci a minha senha
           </Button>
           {formik.isSubmitting && <FormLoadingComponent />}
         </form>

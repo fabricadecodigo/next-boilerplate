@@ -66,10 +66,9 @@ export default function CreateAccountPage() {
       .min(2, 'O nome deve ter pelo menos 2 caracteres'),
     email: Yup.string().email('E-mail inválido').required('Obrigatório'),
     password: Yup.string().required('Obrigatório'),
-    confirmPassword: Yup.string().oneOf(
-      [Yup.ref('password'), null],
-      'A senha não é igual a confirmação'
-    ).required('Obrigatório'),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref('password'), null], 'A senha não é igual a confirmação')
+      .required('Obrigatório'),
   });
 
   const formik = useFormik({

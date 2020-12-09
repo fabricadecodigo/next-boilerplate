@@ -1,8 +1,4 @@
-import {
-  Button, createStyles,
-  makeStyles,
-  Theme
-} from '@material-ui/core';
+import { Button, createStyles, makeStyles, Theme } from '@material-ui/core';
 import Divider from '@material-ui/core/Divider';
 import Grid from '@material-ui/core/Grid';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -40,7 +36,7 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     divider: {
       margin: theme.spacing(4, 0),
-    }
+    },
   })
 );
 
