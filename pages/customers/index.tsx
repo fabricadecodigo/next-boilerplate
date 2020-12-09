@@ -25,7 +25,7 @@ import { useState } from 'react';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    toobar: {
+    toolbar: {
       display: 'flex',
       justifyContent: 'space-between',
       alignItems: 'center',
@@ -85,7 +85,7 @@ export default function CustomerList() {
 
   return (
     <LayoutWithMenu>
-      <div className={classes.toobar}>
+      <div className={classes.toolbar}>
         <div>
           <Typography component="h1" variant="h4">
             Clientes
