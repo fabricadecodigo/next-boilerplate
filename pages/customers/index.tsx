@@ -1,27 +1,25 @@
-import LayoutWithMenu from '../../components/layout/LayoutWithMenu/LayoutWithMenu';
 import {
   Button,
-  Typography,
   createStyles,
+  IconButton, 
   makeStyles,
-  Theme,
+  Paper,
+  Snackbar, 
   Table,
   TableBody,
   TableCell,
   TableContainer,
   TableHead,
-  TableRow,
-  Paper,
-  IconButton,
-  Snackbar,
-  Box,
+  TableRow, 
+  Theme, 
+  Typography
 } from '@material-ui/core';
-
-import Link from 'next/link';
-
 import { Delete, Edit } from '@material-ui/icons';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import LayoutWithMenu from '../../components/layout/LayoutWithMenu/LayoutWithMenu';
 import ConfirmationDialog from '../../components/screen/ConfirmationDialog/ConfirmationDialog';
-import { useState } from 'react';
+import { getCustomers } from '../../lib/api/customers';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -31,13 +29,15 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: 'center',
     },
     table: {
-      marginTop: theme.spacing(3),
+      marginTop: theme.spacing(3)      
     },
   })
 );
 
 export default function CustomerList() {
   const classes = useStyles();
+  const [rows, setRows] = useState([]);
+
   const [deleteOptions, setDeleteOptions] = useState<{
     show: boolean;
     itemId?: number;
@@ -75,13 +75,10 @@ export default function CustomerList() {
     setMessageInfo({ show: false, message: '' });
   };
 
-  const rows = [
-    { id: 1, name: 'Luke Skywalker', email: 'luke.skywalker@starwars.com' },
-    { id: 2, name: 'R2-D2', email: 'r2d2@starwars.com' },
-    { id: 3, name: 'Darth Vader', email: 'darth.vader@starwars.com' },
-    { id: 4, name: 'Leia Organa', email: 'leia.organa@starwars.com' },
-    { id: 5, name: 'Owen Lars', email: 'owen.lars@starwars.com' },
-  ];
+  useEffect(() => {
+     getCustomers().then((rowsResult) => setRows(rowsResult)); 
+     console.log('Teste');
+  }, []);
 
   return (
     <LayoutWithMenu>
