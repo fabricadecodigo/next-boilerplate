@@ -101,7 +101,7 @@ export default function CustomerList() {
         <Table aria-label="Clientes">
           <TableHead>
             <TableRow>
-              <TableCell>Npme</TableCell>
+              <TableCell>Nome</TableCell>
               <TableCell>E-mail</TableCell>
               <TableCell width="140" align="center">
                 Ações
