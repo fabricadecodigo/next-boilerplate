@@ -3,7 +3,7 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import theme from '../lib/theme';
-import '../styles/globals.css';
+import '../../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
